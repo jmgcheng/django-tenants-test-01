@@ -43,7 +43,28 @@ client1.save()
 Domain(domain='client1.localhost', tenant=client1, is_primary=True).save()
 ```
 
+# hosts file
+
+```
+127.0.0.1   client1.localhost
+```
+
+# db check
+
+```
+\dt
+
+# schema = namespace
+\dn
+
+\dt client1.*
+SELECT * FROM client1.dashboard_product;
+SELECT * FROM client1.mainapp_product;
+```
+
 # notes
 
 - client/tenant can have multiple domain
 - you need to manually crud tenant and domain
+- visit http://localhost:8000 for your company
+- visit http://client1.localhost:8000 for specific tenant
