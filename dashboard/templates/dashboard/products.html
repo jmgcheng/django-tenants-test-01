@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Products</title>
+</head>
+<body>
+
+<h1>Your Products</h1>
+
+<ul>
+    {% for p in products %}
+        <li>{{ p.name }}</li>
+    {% empty %}
+        <li>No products found.</li>
+    {% endfor %}
+</ul>
+
+<a href="/">Back to Dashboard</a>
+
+</body>
+</html>
