@@ -1,7 +1,30 @@
 # django-tenants-test-01
-
+```
 Python 3.13.7
 Django==5.2.8
+```
+
+# clone
+```
+git clone git@github.com:jmgcheng/django-tenants-test-01.git
+```
+
+# conda
+```
+conda create -n venv_conda_3.13 python=3.13 -y
+conda env list
+conda activate venv_conda_3.13
+```
+
+# first setup
+```
+pip install -r requirements.txt
+setup postgresdb below because settings.py already use postgres with specific db, user, pass
+python manage.py makemigrations
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py runserver
+```
 
 # db
 
@@ -21,23 +44,13 @@ from customers.models import Client, Domain
 from datetime import date
 
 # Create the "public" tenant
-public = Client(
-    schema_name='public',
-    name='Public Tenant',
-    paid_until=date(2030,1,1),
-    on_trial=False
-)
+public = Client(schema_name='public', name='Public Tenant', paid_until=date(2030,1,1), on_trial=False)
 public.save()
 
 Domain(domain='localhost', tenant=public, is_primary=True).save()
 
 # Create a customer tenant
-client1 = Client(
-    schema_name='client1',
-    name='Client 1',
-    paid_until=date(2030,1,1),
-    on_trial=True
-)
+client1 = Client(schema_name='client1', name='Client 1', paid_until=date(2030,1,1), on_trial=True)
 client1.save()
 
 Domain(domain='client1.localhost', tenant=client1, is_primary=True).save()
