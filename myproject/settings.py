@@ -40,11 +40,11 @@ ALLOWED_HOSTS = []
 # ]
 
 SHARED_APPS = [
-    'django_tenants',      # required
-    'customers',           # app that stores tenant info
-    'public',
-    'django.contrib.admin',
+    'django_tenants',       # required
+    'public',               # public startapp for views and templates shown when visiting www.domain.com
+    'customers',            # startapp that stores tenant info
 
+    'django.contrib.admin',
     'django.contrib.contenttypes',
     'django.contrib.auth',
     'django.contrib.sessions',
@@ -53,7 +53,10 @@ SHARED_APPS = [
 ]
 
 TENANT_APPS = [
-    'dashboard',            # example project app for tenant data
+    'dashboard',            # example startapp for tenant. These are startapp that are available and reuse for each tenant
+    # 'inventory',
+    # 'attendance',
+    # 'employee',
 ]
 
 INSTALLED_APPS = SHARED_APPS + TENANT_APPS
